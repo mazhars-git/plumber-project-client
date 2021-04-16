@@ -1,0 +1,15 @@
+.about-info{
+    padding: 0 10px;
+    
+}
+.aboutInfo-box{
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px rgb(176, 213, 255);
+    background-color: slategrey;
+    color: snow;
+}
+
+.about-icon:hover{
+    color: #fff;
+}

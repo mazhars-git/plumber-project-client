@@ -1,0 +1,32 @@
+.footer-area{
+    background-color: rgb(104, 74, 60);
+    color: rgb(137, 178, 255);
+}
+.footer-bottom{
+    background-color: rgb(51, 22, 12);
+    color: #fff;
+    margin: 0;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 18px;
+}
+.social-icon ul, .address-area ul{
+    padding: 0;
+}
+.social-icon ul li{
+    list-style: none;
+    float: left;
+    margin: 5px;
+    font-size: 40px;
+}
+
+.address-area ul li{
+    list-style: none;
+    margin: 5px 0;
+}
+.addressIcon{
+    margin-right: 7px;
+}
+.social-icon ul li:hover{
+    color: rgb(250, 250, 255);
+}

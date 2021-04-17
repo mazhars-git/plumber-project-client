@@ -1,0 +1,10 @@
+.service-box{
+    padding: 0 10px;
+}
+.service-content{
+    box-shadow: 5px 5px 8px gray;
+    background-color: white;
+}
+.content-box{
+    padding: 15px;
+}

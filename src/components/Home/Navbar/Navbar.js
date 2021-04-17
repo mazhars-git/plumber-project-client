@@ -15,22 +15,22 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ms-auto">
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link" href="#">About</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link" href="#">Services</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link">Reviews</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link">Blog</a>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-2">
                                 <a className="nav-link">Contact Us</a>
                             </li>
                         </ul>

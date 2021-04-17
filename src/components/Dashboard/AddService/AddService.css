@@ -1,0 +1,18 @@
+.uploadImage{
+    background-color: rgb(255, 124, 2);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+}
+.addService{
+    box-shadow: 5px 5px 10px gray;
+    padding: 20px 15px;
+    border-radius: 5px;
+}
+.addService label{
+    margin: 10px 0;
+}
+.addService input{
+    padding: 25px 5px;
+}

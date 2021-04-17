@@ -1,0 +1,15 @@
+.review-content{
+    box-shadow: 5px 5px 10px gray;
+    padding: 15px 10px;
+    border-radius: 10px;
+}
+.text-review{
+    background-color: rgb(65, 37, 11);
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 10px;
+}
+.text-review p{
+    margin: 0;
+}

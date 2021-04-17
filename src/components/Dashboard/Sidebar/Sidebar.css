@@ -1,0 +1,10 @@
+.sidebar-area{
+    padding-left: 10px;
+}
+.sidebar-area ul{
+    padding: 0;
+}
+.sidebar-area ul li{
+    list-style: none;
+    margin: 10px 0;
+}

@@ -13,6 +13,10 @@ import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import OrderList from "./components/Dashboard/OrderList/OrderList";
 import AddService from "./components/Dashboard/AddService/AddService";
 import MakeAdmin from "./components/Dashboard/MakeAdmin/MakeAdmin";
+import ManageServices from "./components/Dashboard/ManageServices/ManageServices";
+import Book from "./components/Dashboard/Book/Book";
+import BookingList from "./components/Dashboard/BookingList/BookingList";
+import AddReview from "./components/Dashboard/AddReview/AddReview";
 
 export const UserContext = createContext();
 
@@ -36,6 +40,18 @@ function App() {
           </Route>
           <Route path="/makeAdmin">
             <MakeAdmin></MakeAdmin>
+          </Route>
+          <Route path="/manageServices">
+            <ManageServices></ManageServices>
+          </Route>
+          <Route path="/book">
+            <Book></Book>
+          </Route>
+          <Route path="/bookings">
+            <BookingList></BookingList>
+          </Route>
+          <Route path="/review">
+            <AddReview></AddReview>
           </Route>
           <Route exact path="/">
             <Home></Home>

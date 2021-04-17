@@ -4,9 +4,9 @@ import Sidebar from '../Sidebar/Sidebar';
 const OrderList = () => {
     return (
        
-    <div>
-        <h1>All Orders here</h1>
-    </div>
+    <section>
+        <h1 className="text-center text-brand py-5">Client Orders</h1>
+    </section>
            
        
     );

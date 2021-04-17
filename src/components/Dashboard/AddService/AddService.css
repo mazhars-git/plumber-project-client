@@ -5,14 +5,14 @@
     color: #fff;
     font-weight: 600;
 }
-.addService{
+.addBox{
     box-shadow: 5px 5px 10px gray;
     padding: 20px 15px;
     border-radius: 5px;
 }
-.addService label{
+.addBox label{
     margin: 10px 0;
 }
-.addService input{
+.addBox input{
     padding: 25px 5px;
 }

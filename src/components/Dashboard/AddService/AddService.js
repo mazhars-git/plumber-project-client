@@ -6,7 +6,7 @@ import './AddService.css';
 
 const AddService = () => {
     return (
-        <div className="container-fluid">
+        <section className="container-fluid dashboard-bg">
             <div className="row">
                 <div className="col-md-2 p-0">
                     <Sidebar></Sidebar>
@@ -14,12 +14,12 @@ const AddService = () => {
                 <div className="col-md-10">
                     <h2 className="text-center py-4 text-brand">Add service here</h2>
                     <form className="w-75 m-auto">
-                        <div className="addService d-flex">
+                        <div className="addBox d-flex">
                             <div class="form-group me-5 w-75">
-                                <label for="serviceTitle">Service Title</label>
+                                <label className="text-white" for="serviceTitle">Service Title</label>
                                 <input type="text" class="form-control" id="serviceTitle" placeholder="Enter title"/>
                                 
-                                <label for="description">Description</label>
+                                <label className="text-white" for="description">Description</label>
                                 <textarea type="text" class="form-control" id="description" placeholder="Enter description"/>
                             </div>
                             <div class="form-group pt-4 mt-2">
@@ -34,7 +34,7 @@ const AddService = () => {
                     
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

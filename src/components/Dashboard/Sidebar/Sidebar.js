@@ -27,23 +27,23 @@ const Sidebar = () => {
                 </li>
 
                 <li>
-                    <Link to='/dashboard/manageServices'>
+                    <Link to='/manageServices'>
                         <FontAwesomeIcon icon={faThLarge} /> <span>Manage Services</span>
                     </Link>
                 </li>
 
                 <li>
-                    <Link to='/dashboard/book'>
+                    <Link to='/book'>
                         <FontAwesomeIcon icon={faShoppingCart} /> <span>Book</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to='/dashboard/bookingList'>
+                    <Link to='/bookings'>
                         <FontAwesomeIcon icon={faThList} /> <span>BookingList</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to='/dashboard/review'>
+                    <Link to='/review'>
                         <FontAwesomeIcon icon={faCommentDots} /> <span>Review</span>
                     </Link>
                 </li>

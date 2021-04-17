@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 
-const ManageServices = () => {
+const BookingList = () => {
     return (
         <section className="container-fluid dashboard-bg">
             <div className="row">
@@ -9,7 +9,7 @@ const ManageServices = () => {
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10">
-                    <h2 className="text-center py-4 text-brand">Manage Orders</h2>
+                    <h2 className="text-center py-4 text-brand">Your Booked Services</h2>
                     
                 </div>
             </div>
@@ -17,4 +17,4 @@ const ManageServices = () => {
     );
 };
 
-export default ManageServices;
+export default BookingList;

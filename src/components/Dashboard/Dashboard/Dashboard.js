@@ -1,10 +1,11 @@
 import React from 'react';
 import OrderList from '../OrderList/OrderList';
 import Sidebar from '../Sidebar/Sidebar';
+import './Dashboard.css';
 
 const Dashboard = () => {
     return (
-        <section>
+        <section className="dashboard-bg">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-2 p-0">

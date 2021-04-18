@@ -1,39 +1,57 @@
 import { faCommentAlt, faCommentDots, faHome, faListUl, faPlusSquare, faShoppingCart, faSignOutAlt, faTh, faThLarge, faThList, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './Sidebar.css';
 
 const Sidebar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        fetch('http://localhost:5500/isAdmin', {
+            method: 'POST',
+            headers: {'content-type' : 'application/json'},
+            body: JSON.stringify({email: loggedInUser.email})
+        })
+        .then(res => res.json())
+        .then(data => setIsAdmin(data))
+        
+    }, [])
+
     return (
         <div className="sidebar-area d-flex flex-column justify-content-between py-5 px-4 bg-success" style={{height:"100vh"}}>
             <ul>
-                <li>
-                    <Link to='/dashboard/orderList'>
-                        <FontAwesomeIcon icon={faThList} /> <span>Order List</span>
-                    </Link>
-                </li>
+                {isAdmin && <div>
+                    <li>
+                        <Link to='/dashboard/orderList'>
+                            <FontAwesomeIcon icon={faThList} /> <span>Order List</span>
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to='/addService'>
+                            <FontAwesomeIcon icon={faPlusSquare} /> <span>Add Service</span>
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to='/makeAdmin'>
+                            <FontAwesomeIcon icon={faUserPlus} /> <span>Make Admin</span>
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to='/manageServices'>
+                            <FontAwesomeIcon icon={faThLarge} /> <span>Manage Services</span>
+                        </Link>
+                    </li>
+                </div>
+                }
 
                 <li>
-                    <Link to='/addService'>
-                        <FontAwesomeIcon icon={faPlusSquare} /> <span>Add Service</span>
-                    </Link>
-                </li>
-
-                <li>
-                    <Link to='/makeAdmin'>
-                        <FontAwesomeIcon icon={faUserPlus} /> <span>Make Admin</span>
-                    </Link>
-                </li>
-
-                <li>
-                    <Link to='/manageServices'>
-                        <FontAwesomeIcon icon={faThLarge} /> <span>Manage Services</span>
-                    </Link>
-                </li>
-
-                <li>
-                    <Link to='/book'>
+                    <Link to='/book/:id'>
                         <FontAwesomeIcon icon={faShoppingCart} /> <span>Book</span>
                     </Link>
                 </li>

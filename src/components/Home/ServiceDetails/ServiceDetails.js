@@ -1,21 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './ServiceDetails.css';
 
-const ServiceDetails = ({service}) => {
+const ServiceDetails = (props) => {
+    const {_id, title, description, image} = props.service;
     return (
         <div className="col-md-4 text-center service-box">
            <div className="service-content">
                 {
-                    service.image ? <img className="img-fluid" src={`data:image/png;base64, ${service.image.img}`}/>
+                    image ? <img className="img-fluid" src={`data:image/png;base64, ${image.img}`}/>
                     :
-                    <img className="img-fluid" src={`http://localhost:5500/${service.image.img}`} alt=""/>
+                    <img className="img-fluid" src={`http://localhost:5500/${image.img}`} alt=""/>
                 }
                 <div className="content-box">
-                    <h4 className="text-brand">{service.title}</h4>
-                    <p>{service.description}</p>
-                    <h5>$320</h5>
-                    <Link to='/book'>
+                    <h4 className="text-brand">{title}</h4>
+                    <p>{description}</p>
+                    <h5 className="text-brand">$320</h5>
+                    <Link to={'/book/'+_id}>
                         <button className="btn btn-brand">Order</button>
                     </Link>
                 </div>

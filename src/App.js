@@ -8,7 +8,6 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Home from "./components/Home/Home/Home";
-import Login from "./components/Home/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import OrderList from "./components/Dashboard/OrderList/OrderList";
 import AddService from "./components/Dashboard/AddService/AddService";
@@ -17,6 +16,8 @@ import ManageServices from "./components/Dashboard/ManageServices/ManageServices
 import Book from "./components/Dashboard/Book/Book";
 import BookingList from "./components/Dashboard/BookingList/BookingList";
 import AddReview from "./components/Dashboard/AddReview/AddReview";
+import PrivateRoute from "./components/Login/PrivateRoute";
+import Login from "../src/components/Login/Login";
 
 export const UserContext = createContext();
 
@@ -29,9 +30,9 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path="/dashboard/orderList">
             <OrderList></OrderList>
           </Route>
@@ -44,7 +45,7 @@ function App() {
           <Route path="/manageServices">
             <ManageServices></ManageServices>
           </Route>
-          <Route path="/book">
+          <Route path="/book/:id">
             <Book></Book>
           </Route>
           <Route path="/bookings">

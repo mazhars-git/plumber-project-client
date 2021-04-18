@@ -1,43 +1,14 @@
-import React, { useMemo } from "react";
-import './Payment.css';
-import {
-  useStripe,
-  useElements,
-  CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement
-} from "@stripe/react-stripe-js";
+import React, { useState } from 'react';
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 
-const useOptions = () => {
-  const options = useMemo(
-    () => ({
-      style: {
-        base: {
-          fontSize: '16px',
-          color: "#424770",
-          letterSpacing: "0.025em",
-          fontFamily: "Source Code Pro, monospace",
-          "::placeholder": {
-            color: "#aab7c4"
-          }
-        },
-        invalid: {
-          color: "#9e2146"
-        }
-      }
-    }),
-    []
-  );
-
-  return options;
-};
-
-const Payment = () => {
+const Payment = ({handlePayment}) => {
   const stripe = useStripe();
   const elements = useElements();
-  const options = useOptions();
+  const [paymentError, setPaymentError] = useState(null);
+  const [paymentSuccess, setPaymentSuccess] = useState(null);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
+    // Block native form submission.
     event.preventDefault();
 
     if (!stripe || !elements) {
@@ -46,85 +17,40 @@ const Payment = () => {
       return;
     }
 
-    const payload = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardNumberElement)
+    // Get a reference to a mounted CardElement. Elements knows how
+    // to find your CardElement because there can only ever be one of
+    // each type of element.
+    const cardElement = elements.getElement(CardElement);
+
+    // Use your card Element with other Stripe.js APIs
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
     });
-    console.log("[PaymentMethod]", payload);
+
+    if (error) {
+      setPaymentError(error.message);
+      setPaymentSuccess(null);
+    } else {
+      setPaymentSuccess(paymentMethod.id);
+      setPaymentError(null);
+      handlePayment(paymentMethod.id);
+    }
   };
 
   return (
-    <section>
-        <form className="text-white payment-card w-50 m-auto" onSubmit={handleSubmit}>
-            <input type="text" className='form-control' placeholder="Name"/>
-            <br/>
-            <input type="email" className='form-control' placeholder="Email"/>
-            <br/>
-            <input type="text" className='form-control' placeholder="Service"/>
-            <br/>
-            <label className="card-label">
-                Card number
-                <CardNumberElement
-                    className="form-control"
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label>
-            <label className="card-label">
-                Expiration date
-                <CardExpiryElement
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label>
-            <label className="card-label">
-                CVC
-                <CardCvcElement
-                    options={options}
-                    onReady={() => {
-                        console.log("CardNumberElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardNumberElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardNumberElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardNumberElement [focus]");
-                    }}
-                />
-            </label> 
-            <div className="card-button pl-1 mt-1">
-                <button className="btn btn-primary card-btn" type="submit" disabled={!stripe}>
-                    Pay
-                </button>
-            </div>
-        </form>
-    </section>
+    <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
+        Pay
+      </button>
+      {
+        paymentError && <p style={{color: 'red'}}>{paymentError}</p>
+      }
+      {
+        paymentSuccess && <p style={{color: 'green'}}>Payment Done Successfully</p>
+      }
+    </form>
   );
 };
-
 export default Payment;

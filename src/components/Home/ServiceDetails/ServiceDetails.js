@@ -10,7 +10,7 @@ const ServiceDetails = (props) => {
                 {
                     image ? <img className="img-fluid" src={`data:image/png;base64, ${image.img}`}/>
                     :
-                    <img className="img-fluid" src={`http://localhost:5500/${image.img}`} alt=""/>
+                    <img className="img-fluid" src={`https://arcane-garden-78714.herokuapp.com/${image.img}`} alt=""/>
                 }
                 <div className="content-box">
                     <h4 className="text-brand">{title}</h4>

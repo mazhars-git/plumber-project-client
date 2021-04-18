@@ -24,7 +24,7 @@ const AddReview = () => {
         formData.append('designation', reviewInfo.designation);
         formData.append('description', reviewInfo.description);
 
-        fetch('http://localhost:5500/addReview', {
+        fetch('https://arcane-garden-78714.herokuapp.com/addReview', {
             method: 'POST',
             body: formData
         })

@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     const handleSubmit = () => {
         const adminData = { ...admin}
 
-        fetch('http://localhost:5500/makeAdmin', {
+        fetch('https://arcane-garden-78714.herokuapp.com/makeAdmin', {
             method: 'POST',
             headers: {'content-type' : 'application/json'},
             body: JSON.stringify(adminData)

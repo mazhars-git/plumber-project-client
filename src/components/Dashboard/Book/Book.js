@@ -15,7 +15,7 @@ const Book = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     useEffect(() => {
-        fetch('http://localhost:5500/service/'+ id)
+        fetch('https://arcane-garden-78714.herokuapp.com/service/'+ id)
         .then(res => res.json())
         .then(data => setOrder(data))
     }, [id])
@@ -24,7 +24,7 @@ const Book = () => {
     const handleSubmit = () => {
         const orderData = {orderId: id, ...loggedInUser, service: order.title, orderDate: new Date().toDateString};
 
-        fetch('http://localhost:5500/addOrder', {
+        fetch('https://arcane-garden-78714.herokuapp.com/addOrder', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json',

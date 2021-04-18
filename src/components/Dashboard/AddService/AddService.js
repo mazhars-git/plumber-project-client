@@ -1,10 +1,39 @@
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import './AddService.css';
 
 const AddService = () => {
+    const [info, setInfo] = useState({});
+    const [file, setFile] = useState(null);
+    const handleBlur = e => {
+        const newInfo = {...info};
+        newInfo[e.target.name] = e.target.value;
+        setInfo(newInfo);
+    }
+    const handleChangeFile = e => {
+        const newFile = e.target.files[0];
+        setFile(newFile);
+    }
+    const handleSubmit = () => {
+        const formData = new FormData()
+        formData.append('file', file);
+        formData.append('title', info.title);
+        formData.append('description', info.description);
+
+        fetch('http://localhost:5500/addAService', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
     return (
         <section className="container-fluid dashboard-bg">
             <div className="row">
@@ -13,18 +42,18 @@ const AddService = () => {
                 </div>
                 <div className="col-md-10">
                     <h2 className="text-center py-4 text-brand">Add service here</h2>
-                    <form className="w-75 m-auto">
+                    <form onSubmit={handleSubmit} className="w-75 m-auto">
                         <div className="addBox d-flex">
                             <div class="form-group me-5 w-75">
                                 <label className="text-white" for="serviceTitle">Service Title</label>
-                                <input type="text" class="form-control" id="serviceTitle" placeholder="Enter title"/>
+                                <input onBlur={handleBlur} type="text" name="title" class="form-control" id="serviceTitle" placeholder="Enter title"/>
                                 
                                 <label className="text-white" for="description">Description</label>
-                                <textarea type="text" class="form-control" id="description" placeholder="Enter description"/>
+                                <textarea onBlur={handleBlur} type="text" name="description" class="form-control" id="description" placeholder="Enter description"/>
                             </div>
                             <div class="form-group pt-4 mt-2">
-                                <label className="uploadImage" for="image"><FontAwesomeIcon icon={faCloudUploadAlt} /> Upload</label>
-                                <input type="file" id="image" hidden/>
+                                <label className="uploadImage" for="image"><FontAwesomeIcon icon={faCloudUploadAlt} /> Upload image</label>
+                                <input onChange={handleChangeFile} type="file" id="image" hidden/>
                             </div>
                         </div>
                         <div className="submit-button text-right pt-4">

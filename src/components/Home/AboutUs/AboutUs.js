@@ -23,8 +23,8 @@ const AboutUs = () => {
         }
     ]
     return (
-        <section className="about-us pt-5 pb-5">
-            <h2 className="text-brand text-center py-5">Why Choose Us</h2>
+        <section className="about-us py-5">
+            <h2 className="text-brand text-center py-3">Why Choose Us</h2>
             <div className="container">
                 <div className="row pt-5">
                     <div className="col-md-6 align-self-center">

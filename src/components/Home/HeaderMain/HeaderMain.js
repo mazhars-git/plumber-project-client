@@ -1,5 +1,6 @@
 import React from 'react';
 import bgImage from '../../../images/bg-1.jpg';
+import HeaderAnimation from '../HeaderAnimation/HeaderAnimation';
 import './HeaderMain.css';
 
 const HeaderMain = () => {
@@ -12,7 +13,8 @@ const HeaderMain = () => {
                     <button className="btn btn-brand">Explore More</button>
                 </div>
                 <div className="col-md-6">
-                    <img style={{borderRadius: '5px'}} className="img-fluid" src={bgImage} alt=""/>
+                    {/* <img style={{borderRadius: '5px'}} className="img-fluid" src={bgImage} alt=""/> */}
+                    <HeaderAnimation></HeaderAnimation>
                 </div>
             </div>
         </section>

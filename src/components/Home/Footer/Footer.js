@@ -3,12 +3,12 @@ import './Footer.css';
 import logo from '../../../images/logo-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faHome, faMailBulk, faPhone, faVoicemail } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faHome, faMailBulk, faPhone, faPhoneVolume, faVoicemail } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
     
     return (
-        <section className="footer-area pt-5">
+        <section className="footer-area pt-5 text-white">
             <div className="container">
                 <div className="row py-5">
                     <div className="col-md-6 text-center">
@@ -31,17 +31,17 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="col-md-6 address-area">
-                        <h3>OUR ADDRESS</h3>
+                        <h3>OFFICE ADDRESS</h3>
                         <ul>
                             <li><FontAwesomeIcon className="addressIcon" icon={faHome} /> St. Patrick’s Woollen Mills, Cork, Ireland</li>
-                            <li><FontAwesomeIcon className="addressIcon" icon={faPhone} /> +353 21 245 5250</li>
-                            <li><FontAwesomeIcon className="addressIcon" icon={faPhone} /> +353 21 245 5250</li>
+                            <li><FontAwesomeIcon className="addressIcon" icon={faPhone} /> +00 21 245 5250</li>
+                            <li><FontAwesomeIcon className="addressIcon" icon={faPhone} /> +00 22 222 5444</li>
                             <li><FontAwesomeIcon className="addressIcon" icon={faEnvelope} /> helloplumbs@gmail.com</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <p className="footer-bottom">&copy; {new Date().getFullYear} Plumbers.com, Mazhar All right reserved. </p>
+            <p className="footer-bottom">&copy; {new Date().getFullYear()} plumberservice.com, all right reserved. </p>
         </section>
     );
 };

@@ -4,6 +4,9 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import './Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 
 const Login = () => {
@@ -33,10 +36,11 @@ const Login = () => {
             var credential = error.credential;
         });
     }
+
     return (
-        <section className="container">
-            <div className="row align-items-center" style={{height: '100vh'}}>
-                <div className="col-md-6 shadow p-5">
+        <section className="container-fluid bg-login">
+            <div className="row m-auto w-50" style={{height: '100vh'}}>
+                <div className="login-box p-5">
                     <div className="form-group">
                         <label htmlFor="">User Name</label>
                         <input type="text" className="form-control" />
@@ -49,12 +53,8 @@ const Login = () => {
                         <label htmlFor="" className="text-danger">Forgot your password?</label>
                     </div>
                     <div className="from-group mt-5">
-                        <button className="btn btn-brand" onClick={handleGoogleSignIn}>Google Sign in</button>
+                        <button className="btn btn-brand" onClick={handleGoogleSignIn}><FontAwesomeIcon className='g-icon' icon={faGoogle}/> Sign in</button>
                     </div>
-                </div>
-                
-                <div className="col-md-6 d-none d-md-block align-self-end">
-                    <img className="img-fluid" src="" alt=""/>
                 </div>
             </div>
         </section>

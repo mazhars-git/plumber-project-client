@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ServiceData from '../ServiceData/ServiceData';
 import Sidebar from '../Sidebar/Sidebar';
 
 const ManageServices = () => {
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5500/services')
+        .then(res => res.json())
+        .then(data => setServices(data))
+    },[])
     return (
         <section className="container-fluid dashboard-bg">
             <div className="row">
@@ -10,7 +18,7 @@ const ManageServices = () => {
                 </div>
                 <div className="col-md-10">
                     <h2 className="text-center py-4 text-brand">Manage Orders</h2>
-                    
+                    <ServiceData services={services}></ServiceData>
                 </div>
             </div>
         </section>

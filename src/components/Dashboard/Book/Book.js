@@ -13,6 +13,7 @@ const Book = () => {
     const {id} = useParams();
     const [order, setOrder] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [payId, setPayId] = useState(null);
 
     useEffect(() => {
         fetch('https://arcane-garden-78714.herokuapp.com/service/'+ id)
@@ -20,9 +21,17 @@ const Book = () => {
         .then(data => setOrder(data))
     }, [id])
 
+    const handlePaymentSuccess = (paymentId) => {
+        setPayId(paymentId);
+    }
 
     const handleSubmit = () => {
-        const orderData = {orderId: id, ...loggedInUser, service: order.title, orderDate: new Date().toDateString};
+        const orderData = {
+            orderId: id,
+            payment: payId, 
+            ...loggedInUser, 
+            service: order.title, 
+            orderDate: new Date().toDateString};
 
         fetch('https://arcane-garden-78714.herokuapp.com/addOrder', {
             method: 'POST',
@@ -38,39 +47,43 @@ const Book = () => {
             }
         })
     }
-    const handlePaymentSuccess = (paymentId) => {
-
-    }
+    
 
     return (
-        <section className="container-fluid dashboard-bg">
+        <section className="container-fluid payment-bg">
             <div className="row">
                 <div className="col-md-2 p-0">
                     <Sidebar></Sidebar>
                 </div>
                 <div className="col-md-10">
-                    <div className="row">
                         <h2 className="text-center py-4 text-brand">Book your service</h2>
-                        <div className="col-md-8 info pb-2">
-                            <form onSubmit={handleSubmit} className="addBox w-50 m-auto">
-                                <input type="text" className='form-control' name="name"placeholder="Name"/>
-                                <br/>
-                                <input type="email" className='form-control' name="email" placeholder="Email"/>
-                                <br/>
-                                <input type="text" className='form-control' placeholder="Address"/>
-                                <br/>
-                                <button className="btn btn-success">Submit</button>
-                            </form>
+                    
+                        <div className="pb-2 row">
+                            <div className="payment col-md-4">
+                                <Elements stripe={stripePromise}>
+                                    <Payment handlePayment={handlePaymentSuccess}></Payment>
+                                </Elements>
+                            </div>
+                            <div className="col-md-8">
+                                <form onSubmit={handleSubmit} className="w-75 m-auto">
+                                    <input type="text" className='form-control' name="name"placeholder="Name"/>
+                                    <br/>
+                                    <input type="email" className='form-control' name="email" placeholder="Email"/>
+                                    <br/>
+                                    <input type="text" className='form-control' placeholder="Address"/>
+                                    <br/>
+                                    <button className="btn btn-success">Submit</button>
+                                </form>
+                            </div>
+                           
                         </div>
-                        <div className="col-md-4 payment-section">
-                            <Elements stripe={stripePromise}>
-                                <Payment handlePayment={handlePaymentSuccess}></Payment>
-                            </Elements>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
+
+   
+   
+
     );
 };
 

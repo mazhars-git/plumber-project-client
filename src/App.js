@@ -14,7 +14,7 @@ import AddService from "./components/Dashboard/AddService/AddService";
 import MakeAdmin from "./components/Dashboard/MakeAdmin/MakeAdmin";
 import ManageServices from "./components/Dashboard/ManageServices/ManageServices";
 import Book from "./components/Dashboard/Book/Book";
-import BookingList from "./components/Dashboard/BookingList/BookingList";
+import Bookings from "./components/Dashboard/Bookings/Bookings";
 import AddReview from "./components/Dashboard/AddReview/AddReview";
 import PrivateRoute from "./components/Login/PrivateRoute";
 import Login from "../src/components/Login/Login";
@@ -33,7 +33,7 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
-          <Route path="/dashboard/orderList">
+          <Route path="/orderList">
             <OrderList></OrderList>
           </Route>
           <Route path="/addService">
@@ -49,7 +49,7 @@ function App() {
             <Book></Book>
           </PrivateRoute>
           <Route path="/bookings">
-            <BookingList></BookingList>
+            <Bookings></Bookings>
           </Route>
           <Route path="/review">
             <AddReview></AddReview>

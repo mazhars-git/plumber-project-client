@@ -25,7 +25,7 @@ const Sidebar = () => {
             <ul>
                 {isAdmin && <div>
                     <li>
-                        <Link to='/dashboard/orderList'>
+                        <Link to='/orderList'>
                             <FontAwesomeIcon icon={faThList} /> <span>Order List</span>
                         </Link>
                     </li>

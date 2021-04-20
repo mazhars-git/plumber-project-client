@@ -1,0 +1,28 @@
+.bg-login{
+    background-image: url('../../images/bg-2.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    padding: 0;
+}
+.bg-login::after{
+    position: absolute;
+    content: '';
+    display: block;
+    background: rgb(16, 13, 39);
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -5;
+}
+.login-box{
+    box-shadow: 5px 5px 10px white;
+    height: 80%;
+    margin-top: 30px;
+    color: #fff;
+}
+.g-icon{
+    color: rgb(0, 38, 255);
+}

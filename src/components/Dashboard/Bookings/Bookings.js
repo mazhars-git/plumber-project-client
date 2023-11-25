@@ -7,7 +7,7 @@ const Bookings = () => {
     const [loggedInUse, setLoggedInUser] = useContext(UserContext);
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5500/orders?email='+loggedInUse.email)
+        fetch('https://hello-plumber-server.onrender.com/orders?email='+loggedInUse.email)
         .then(res => res.json())
         .then(data => setBookings(data))
     },[])

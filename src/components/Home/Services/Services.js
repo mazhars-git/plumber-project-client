@@ -4,7 +4,7 @@ import ServiceDetails from '../ServiceDetails/ServiceDetails';
 const Services = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('https://arcane-garden-78714.herokuapp.com/services')
+        fetch('https://hello-plumber-server.onrender.com/services')
         .then(res => res.json())
         .then(data => setServices(data))
     }, [])

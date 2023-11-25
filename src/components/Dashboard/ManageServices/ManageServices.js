@@ -6,7 +6,7 @@ const ManageServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5500/services')
+        fetch('https://hello-plumber-server.onrender.com/services')
         .then(res => res.json())
         .then(data => setServices(data))
     },[])

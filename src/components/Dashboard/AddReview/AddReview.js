@@ -24,7 +24,7 @@ const AddReview = () => {
         formData.append('designation', reviewInfo.designation);
         formData.append('description', reviewInfo.description);
 
-        fetch('https://arcane-garden-78714.herokuapp.com/addReview', {
+        fetch('https://hello-plumber-server.onrender.com/addReview', {
             method: 'POST',
             body: formData
         })

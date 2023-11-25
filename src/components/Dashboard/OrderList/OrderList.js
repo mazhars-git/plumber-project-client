@@ -6,7 +6,7 @@ const OrderList = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5500/orders')
+        fetch('https://hello-plumber-server.onrender.com/orders')
         .then(res => res.json())
         .then(data => setOrders(data))
     },[])

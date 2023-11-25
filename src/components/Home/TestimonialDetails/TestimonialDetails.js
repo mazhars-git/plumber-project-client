@@ -12,7 +12,7 @@ const TestimonialDetails = ({review}) => {
                         {
                             review.image ? <img className="img-round" src={`data:image/png;base64, ${review.image.img}`}/>
                             :
-                            <img className="img-round" src={`https://arcane-garden-78714.herokuapp.com/${review.image.img}`} alt=""/>
+                            <img className="img-round" src={`https://hello-plumber-server.onrender.com/${review.image.img}`} alt=""/>
                         }
                     </div>
                     <div className="profile-title align-self-center pt-3">

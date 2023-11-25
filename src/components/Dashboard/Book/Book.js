@@ -16,7 +16,7 @@ const Book = () => {
     const [payId, setPayId] = useState(null);
 
     useEffect(() => {
-        fetch('https://arcane-garden-78714.herokuapp.com/service/'+ id)
+        fetch('https://hello-plumber-server.onrender.com/service/'+ id)
         .then(res => res.json())
         .then(data => setOrder(data))
     }, [id])
@@ -33,7 +33,7 @@ const Book = () => {
             service: order.title, 
             orderDate: new Date().toDateString};
 
-        fetch('https://arcane-garden-78714.herokuapp.com/addOrder', {
+        fetch('https://hello-plumber-server.onrender.com/addOrder', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json',
